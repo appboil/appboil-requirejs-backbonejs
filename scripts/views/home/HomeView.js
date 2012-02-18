@@ -25,8 +25,11 @@ define([
             },
 
             gotoNext:function (event) {
-                var nextPage = (new NextView).render().$el;
-                $('body').html(nextPage);
+                var nextView = new NextView;
+                var page = nextView.render().$el;
+
+                $.mobile.pageContainer.append(page);
+                $.mobile.changePage(page, {role:'page', transition:'slide'});
             }
         });
 

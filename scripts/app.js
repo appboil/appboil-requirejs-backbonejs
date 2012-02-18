@@ -10,8 +10,11 @@ define(['jQuery', 'views/home/HomeView'],
     function ($, HomeView) {
         return {
             init:function () {
+
                 var firstPage = (new HomeView).render().$el;
-                $('body').html(firstPage);
+                $('body').append(firstPage);
+                $.mobile.initializePage();
+
             }
         };
     });
