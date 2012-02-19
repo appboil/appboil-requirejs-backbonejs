@@ -6,7 +6,7 @@
  * Time: 9:50 AM
  */
 
-define(['jQuery', 'views/home/HomeView'],
+define(['jquery', 'views/home/HomeView'],
     function ($, HomeView) {
         return {
             init:function () {

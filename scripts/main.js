@@ -8,7 +8,7 @@
 
 require.config({
     paths:{
-        jQuery:'libs/jquery/jquery-loader',
+        jquery:'libs/jquery/jquery-1.7.1',
         underscore:'libs/underscore/underscore-loader',
         Backbone:'libs/backbone/backbone-loader',
         order:'libs/require/order-1.0.5',
@@ -17,7 +17,7 @@ require.config({
     }
 });
 
-require(['order!jQuery', 'order!app'],
+require(['order!jquery', 'order!app'],
     function ($, app) {
 
         app.init();
