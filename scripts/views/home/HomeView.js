@@ -7,7 +7,7 @@
  */
 
 define([
-    'jQuery',
+    'jquery',
     'underscore',
     'Backbone',
     'views/next/NextView',
