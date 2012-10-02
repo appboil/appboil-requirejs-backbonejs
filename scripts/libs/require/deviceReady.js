@@ -6,34 +6,51 @@
  * Time: 3:34 PM
  */
 
-define(function () {
+define(['require'], function (require) {
     'use strict';
 
-    function onDeviceReady() {
-
+    function onDeviceReady(browser) {
+        console.log('onDeviceReady called ' + browser);
     }
 
     function pageLoaded() {
         document.removeEventListener('DOMContentLoaded', pageLoaded, false);
 
+        console.log('pageLoaded called');
+
         document.addEventListener('deviceready', onDeviceReady, false);
     }
 
-    document.addEventListener('DOMContentLoaded', pageLoaded, false);
+//    document.addEventListener('DOMContentLoaded', pageLoaded, false);
+//    window.addEventListener("load", pageLoaded, false);
 
+//    if (navigator.userAgent.match(/(iPad|iPhone|Android)/)) {
+//        // This is running on a device so waiting for deviceready event
+//        document.addEventListener('deviceready', onDeviceReady, false);
+//    } else {
+//        // On desktop don't have to wait for anything
+//        onDeviceReady(true);
+//    }
 
-    Object.keys(platforms);
+    function deviceReady(callback, platforms) {
+        var regExp = new RegExp('(' + Object.keys(platforms).join('|') + ')', 'i'),
+            platform = regExp.exec(navigator.userAgent);
 
-    if (navigator.userAgent.match(/(iPad|iPhone|Android)/)) {
-        // This is running on a device so waiting for deviceready event
-        document.addEventListener('deviceready', onDeviceReady, false);
-    } else {
-        // On desktop don't have to wait for anything
-        onDeviceReady(true);
-    }
+        console.log('deviceReady called ' + platform);
 
-    function deviceReady(platforms, callback) {
+        // If platform was found, replacing array with a string value
+        if (platform != null) {
 
+            platform = platform[0].toLowerCase();
+
+            document.addEventListener('deviceready', onDeviceReady, false);
+
+            var platformJS = platforms[platform];
+            require([platformJS]);
+
+        } else {
+            onDeviceReady(true);
+        }
 
     }
 

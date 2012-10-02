@@ -12,6 +12,8 @@ require.config({
         text:'libs/require/text',
         // RequireJS plugin
         domReady:'libs/require/domReady',
+        // RequireJS plugin
+        deviceReady:'libs/require/deviceReady',
         // underscore library
         underscore:'libs/underscore/underscore',
         // Backbone.js library
@@ -37,29 +39,38 @@ require.config({
     }
 });
 
-require(['domReady', 'views/home/HomeView', 'jqm'],
-    function (domReady, HomeView) {
+require(['deviceReady', 'views/home/HomeView', 'jqm'],
+    function (deviceReady, HomeView) {
 
-        // domReady is RequireJS plugin that triggers when DOM is ready
-        domReady(function () {
-
-            function onDeviceReady(desktop) {
-                // Hiding splash screen when app is loaded
-                if (desktop !== true)
-                    cordova.exec(null, null, 'SplashScreen', 'hide', []);
-
-                // Pushing MainView
-                $.mobile.jqmNavigator.pushView(new HomeView());
+        deviceReady(function () {
+                console.log('device ready called');
+            },
+            {
+                android:'libs/cordova/cordova-android-2.1.0.js',
+                ios:'libs/cordova/cordova-ios-2.1.0.js'
             }
+        );
 
-            if (navigator.userAgent.match(/(iPad|iPhone|Android)/)) {
-                // This is running on a device so waiting for deviceready event
-                document.addEventListener('deviceready', onDeviceReady, false);
-            } else {
-                // On desktop don't have to wait for anything
-                onDeviceReady(true);
-            }
-
-        });
+//        // domReady is RequireJS plugin that triggers when DOM is ready
+//        domReady(function () {
+//
+//            function onDeviceReady(desktop) {
+//                // Hiding splash screen when app is loaded
+//                if (desktop !== true)
+//                    cordova.exec(null, null, 'SplashScreen', 'hide', []);
+//
+//                // Pushing MainView
+//                $.mobile.jqmNavigator.pushView(new HomeView());
+//            }
+//
+//            if (navigator.userAgent.match(/(iPad|iPhone|Android)/)) {
+//                // This is running on a device so waiting for deviceready event
+//                document.addEventListener('deviceready', onDeviceReady, false);
+//            } else {
+//                // On desktop don't have to wait for anything
+//                onDeviceReady(true);
+//            }
+//
+//        });
 
     });
