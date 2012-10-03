@@ -6,17 +6,12 @@
  * Time: 9:53 AM
  */
 
-define([
-    'jquery',
-    'underscore',
-    'Backbone',
-    'views/next/NextView',
-    'text!views/home/HomeViewTemplate.html!strip'],
+define(['jquery', 'underscore', 'Backbone', 'views/next/NextView', 'text!views/home/HomeViewTemplate.html!strip'],
     function ($, _, Backbone, NextView, HomeViewTemplate) {
         var HomeView = Backbone.View.extend({
 
             events:{
-                'click #gotoNext':'gotoNext'
+                'click #btnNextView':'btnNextView_clickHandler'
             },
 
             render:function () {
@@ -24,14 +19,10 @@ define([
                 return this;
             },
 
-            gotoNext:function (event) {
-                var nextView = new NextView;
-                var page = nextView.render().$el;
-
-                $.mobile.pageContainer.append(page);
-                $.mobile.changePage(page, {role:'page', transition:'slide'});
+            btnNextView_clickHandler:function (event) {
+                $.mobile.jqmNavigator.pushView(new NextView);
             }
-        });
 
+        });
         return HomeView;
     });

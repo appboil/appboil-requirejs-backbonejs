@@ -17,9 +17,9 @@ require.config({
         // Backbone.js library
         Backbone:'libs/backbone/backbone',
         // jQuery
-        jquery:'libs/jquery/jquery-1.8.1',
+        jquery:'libs/jquery/jquery-1.8.2',
         // jQuery Mobile framework
-        jqm:'libs/jquery.mobile/jquery.mobile-1.2.0-rc.2',
+        jqm:'libs/jquery.mobile/jquery.mobile-1.2.0',
         // jQuery Mobile plugin for Backbone views navigation
         jqmNavigator:'libs/jquery.mobile/jqmNavigator'
     },
@@ -32,7 +32,7 @@ require.config({
             exports:'_'
         },
         jqm:{
-            deps:['jquery', 'jqm-config'/* jQM specific config */, 'jqmNavigator']
+            deps:['jquery', 'jqmNavigator']
         }
     }
 });
@@ -47,6 +47,9 @@ require(['domReady', 'views/home/HomeView', 'jqm'],
                 // Hiding splash screen when app is loaded
                 if (desktop !== true)
                     cordova.exec(null, null, 'SplashScreen', 'hide', []);
+
+                // Setting default transition to slide
+                $.mobile.defaultPageTransition = 'slide';
 
                 // Pushing MainView
                 $.mobile.jqmNavigator.pushView(new HomeView());

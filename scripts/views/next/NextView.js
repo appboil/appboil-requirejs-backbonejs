@@ -11,9 +11,17 @@ define(['underscore', 'Backbone', 'text!views/next/NextViewTemplate.html!strip']
 
         var NextView = Backbone.View.extend({
 
+            events:{
+                'click #btnBack':'btnBack_clickHandler'
+            },
+
             render:function () {
                 this.$el.html(_.template(NextViewTemplate));
                 return this;
+            },
+
+            btnBack_clickHandler:function (event) {
+                $.mobile.jqmNavigator.popView();
             }
 
         });
