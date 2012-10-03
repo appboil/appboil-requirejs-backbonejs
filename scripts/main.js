@@ -8,18 +8,37 @@
 
 require.config({
     paths:{
-        jquery:'libs/jquery/jquery-1.7.1',
-        underscore:'libs/underscore/underscore-loader',
-        Backbone:'libs/backbone/backbone-loader',
-        order:'libs/require/order-1.0.5',
-        text:'libs/require/text-1.0.6',
-        domReady:'libs/require/domReady-1.0.0'
+        // RequireJS plugin
+        text:'libs/require/text',
+        // RequireJS plugin
+        domReady:'libs/require/domReady',
+        // underscore library
+        underscore:'libs/underscore/underscore',
+        // Backbone.js library
+        Backbone:'libs/backbone/backbone',
+        // jQuery
+        jquery:'libs/jquery/jquery-1.8.2'
+    },
+    shim:{
+        Backbone:{
+            deps:['underscore', 'jquery'],
+            exports:'Backbone'
+        },
+        underscore:{
+            exports:'_'
+        }
     }
 });
 
-require(['order!jquery', 'order!app'],
-    function ($, app) {
+require(['domReady', 'views/home/HomeView'],
+    function (domReady, HomeView) {
 
-        app.init();
+        // domReady is RequireJS plugin that triggers when DOM is ready
+        domReady(function () {
+
+            var homeView = (new HomeView()).render();
+            $('body').html(homeView.el);
+
+        });
 
     });

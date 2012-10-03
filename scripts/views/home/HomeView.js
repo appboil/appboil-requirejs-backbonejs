@@ -6,17 +6,12 @@
  * Time: 9:53 AM
  */
 
-define([
-    'jquery',
-    'underscore',
-    'Backbone',
-    'views/next/NextView',
-    'text!views/home/HomeViewTemplate.html!strip'],
+define(['jquery', 'underscore', 'Backbone', 'views/next/NextView', 'text!views/home/HomeViewTemplate.html!strip'],
     function ($, _, Backbone, NextView, HomeViewTemplate) {
         var HomeView = Backbone.View.extend({
 
             events:{
-                'click #gotoNext':'gotoNext'
+                'click #btnNextView':'btnNextView_clickHandler'
             },
 
             render:function () {
@@ -24,9 +19,9 @@ define([
                 return this;
             },
 
-            gotoNext:function (event) {
-                var nextPage = (new NextView).render().$el;
-                $('body').html(nextPage);
+            btnNextView_clickHandler:function (event) {
+                var nextView = (new NextView).render();
+                $('body').html(nextView.el);
             }
         });
 
