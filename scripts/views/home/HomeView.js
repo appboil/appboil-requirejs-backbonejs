@@ -6,7 +6,7 @@
  * Time: 9:53 AM
  */
 
-define(['jquery', 'underscore', 'Backbone', 'views/next/NextView', 'text!views/home/HomeViewTemplate.html!strip'],
+define(['jquery', 'underscore', 'Backbone', 'views/next/NextView', 'text!views/home/HomeView.tpl'],
     function ($, _, Backbone, NextView, HomeViewTemplate) {
         var HomeView = Backbone.View.extend({
 

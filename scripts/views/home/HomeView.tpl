@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-
-<div data-role="header">
+<div data-role="header" data-position="fixed">
     <h1>Home View</h1>
 </div>
 
@@ -12,6 +6,3 @@
     <p>Click the button below no navigate to next view</p>
     <button id="btnNextView">Next</button>
 </div>
-
-</body>
-</html>

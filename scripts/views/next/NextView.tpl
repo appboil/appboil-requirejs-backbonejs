@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-
 <div data-role="header" data-position="fixed">
     <a id="btnBack" href="#" data-icon="back" data-iconpos="notext">Back</a>
-
     <h1>Next View</h1>
 </div>
 
@@ -129,6 +122,3 @@
         </li>
     </ul>
 </div>
-
-</body>
-</html>
