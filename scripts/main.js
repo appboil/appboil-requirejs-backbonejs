@@ -9,15 +9,15 @@
 require.config({
     paths:{
         // RequireJS plugin
-        text:'libs/require/text',
+        text:'libs/require/text-2.0.5',
         // RequireJS plugin
-        domReady:'libs/require/domReady',
+        domReady:'libs/require/domReady-2.0.1',
         // underscore library
-        underscore:'libs/underscore/underscore',
+        underscore:'libs/underscore/underscore-1.4.4',
         // Backbone.js library
-        Backbone:'libs/backbone/backbone',
+        Backbone:'libs/backbone/backbone-0.9.10',
         // jQuery
-        jquery:'libs/jquery/jquery-1.8.2',
+        jquery:'libs/jquery/jquery-1.9.1',
         // jQuery Mobile framework
         jqm:'libs/jquery.mobile/jquery.mobile-1.2.0',
         // jQuery Mobile plugin for Backbone views navigation
